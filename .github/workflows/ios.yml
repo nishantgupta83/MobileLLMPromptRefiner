@@ -1,0 +1,23 @@
+name: iOS Build and Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Select Xcode version
+      run: sudo xcode-select -s /Applications/Xcode_15.0.app/Contents/Developer
+
+    - name: Build
+      run: xcodebuild -scheme MobileLLMPromptRefiner -destination 'platform=iOS Simulator,name=iPhone 15 Pro' build
+
+    - name: Test
+      run: xcodebuild -scheme MobileLLMPromptRefiner -destination 'platform=iOS Simulator,name=iPhone 15 Pro' test
