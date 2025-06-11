@@ -15,9 +15,8 @@ let package = Package(
     ],
     dependencies: [
         // Core ML and Foundation Models framework dependencies
-        .package(url: "https://github.com/tattn/LocalLLMClient.git", branch: "main"),
+        .package(url: "https://github.com/tattn/LocalLLMClient.git", branch: "main"), // Consider pinning to tag or commit
         .package(url: "https://github.com/apple/swift-async-algorithms.git", from: "1.0.0"),
-        .package(url: "https://github.com/pointfreeco/swift-combine-schedulers", from: "1.0.0"),
         .package(url: "https://github.com/pointfreeco/combine-schedulers", from: "1.0.0"),
     ],
     targets: [
@@ -26,7 +25,7 @@ let package = Package(
             dependencies: [
                 "LocalLLMClient",
                 .product(name: "AsyncAlgorithms", package: "swift-async-algorithms"),
-                .product(name: "CombineSchedulers", package: "swift-combine-schedulers"),
+                .product(name: "CombineSchedulers", package: "combine-schedulers"),
             ],
             resources: [
                 .process("Resources/Models"),

@@ -280,10 +280,10 @@ struct PromptRefinerView: View {
 
             if let metrics = promptViewModel.currentMetrics {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 12) {
-                    MetricCard(title: "Processing Speed", value: "\(metrics.latencyReduction, specifier: "%.1f")x faster", color: .green)
-                    MetricCard(title: "Accuracy Improvement", value: "+\(metrics.accuracyImprovement, specifier: "%.1f")%", color: .blue)
-                    MetricCard(title: "Energy Efficiency", value: "\(metrics.energyEfficiency, specifier: "%.1f")x better", color: .purple)
-                    MetricCard(title: "Token Reduction", value: "\(metrics.tokenReduction, specifier: "%.0f")% saved", color: .orange)
+                    MetricCard(title: "Processing Speed", value: String(format: "%.1fx faster", metrics.latencyReduction), color: .green)
+                    MetricCard(title: "Accuracy Improvement", value: String(format: "+%.1f%%", metrics.accuracyImprovement), color: .blue)
+                    MetricCard(title: "Energy Efficiency", value: String(format: "%.1fx better", metrics.energyEfficiency), color: .purple)
+                    MetricCard(title: "Token Reduction", value: String(format: "%.0f%% saved", metrics.tokenReduction), color: .orange)
                 }
             }
         }
